@@ -14,7 +14,6 @@ def get_all_deliveries():
             'recipient': delivery.recipient,
             'cargo_volume': delivery.cargo_volume,
             'user_id': delivery.user_id,
-            # додайте інші поля за потреби
         })
     return jsonify({'deliveries': delivery_list})
 
@@ -27,7 +26,6 @@ def get_delivery(delivery_id):
             'recipient': delivery.recipient,
             'cargo_volume': delivery.cargo_volume,
             'user_id': delivery.user_id,
-            # додайте інші поля за потреби
         })
     else:
         return jsonify({'message': 'Delivery not found'}), 404
@@ -38,14 +36,12 @@ def create_delivery():
     recipient = data['recipient']
     cargo_volume = data['cargo_volume']
     user_id = data['user_id']
-    # додайте інші поля за потреби
     delivery = delivery_dao.create_delivery(recipient, cargo_volume, user_id)
     return jsonify({
         'id': delivery.id,
         'recipient': delivery.recipient,
         'cargo_volume': delivery.cargo_volume,
         'user_id': delivery.user_id,
-        # додайте інші поля за потреби
     }), 201
 
 @app.route('/deliveries/<int:delivery_id>', methods=['PUT'])
@@ -54,7 +50,6 @@ def update_delivery(delivery_id):
     new_recipient = data['recipient']
     new_cargo_volume = data['cargo_volume']
     new_user_id = data['user_id']
-    # додайте інші поля за потреби
     delivery = delivery_dao.update_delivery(delivery_id, new_recipient, new_cargo_volume, new_user_id)
     if delivery:
         return jsonify({
@@ -62,7 +57,6 @@ def update_delivery(delivery_id):
             'recipient': delivery.recipient,
             'cargo_volume': delivery.cargo_volume,
             'user_id': delivery.user_id,
-            # додайте інші поля за потреби
         })
     else:
         return jsonify({'message': 'Delivery not found'}), 404
@@ -76,10 +70,10 @@ def delete_delivery(delivery_id):
             'recipient': delivery.recipient,
             'cargo_volume': delivery.cargo_volume,
             'user_id': delivery.user_id,
-            # додайте інші поля за потреби
         })
     else:
         return jsonify({'message': 'Delivery not found'}), 404
+
 
 if __name__ == '__main__':
     app.run(debug=True)

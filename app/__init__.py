@@ -9,7 +9,7 @@ from my_auth.dao.delivery_dao import DeliveryDAO
 from my_auth.dao.operator_dao import OperatorDAO
 from my_auth.dao.parcel_dao import ParcelDAO
 from my_auth.dao.regione_dao import RegioneDAO
-# Імпортуйте інші DAO
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://{user}:{password}@{host}:{port}/{database}'.format(
@@ -21,7 +21,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://{user}:{password}@{host}:{port}
 )
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Ініціалізуйте бази даних
+
 DepartmentDAO.init_app(app)
 CityDAO.init_app(app)
 UserDAO.init_app(app)
@@ -33,4 +33,4 @@ RegioneDAO.init_app(app)
 
 db = SQLAlchemy()
 db.init_app(app)
-# Ініціалізуйте інші бази даних
+

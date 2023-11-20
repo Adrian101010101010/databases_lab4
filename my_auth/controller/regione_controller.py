@@ -11,7 +11,6 @@ def get_all_regiones():
     for regione in regiones:
         regione_list.append({
             'name': regione.name,
-            # додайте інші поля за потреби
         })
     return jsonify({'regiones': regione_list})
 
@@ -21,7 +20,6 @@ def get_regione(name):
     if regione:
         return jsonify({
             'name': regione.name,
-            # додайте інші поля за потреби
         })
     else:
         return jsonify({'message': 'Regione not found'}), 404
@@ -30,22 +28,18 @@ def get_regione(name):
 def create_regione():
     data = request.get_json()
     name = data['name']
-    # додайте інші поля за потреби
     regione = regione_dao.create_regione(name)
     return jsonify({
         'name': regione.name,
-        # додайте інші поля за потреби
     }), 201
 
 @app.route('/regiones/<string:name>', methods=['PUT'])
 def update_regione(name):
     data = request.get_json()
-    # додайте інші поля за потреби
     regione = regione_dao.update_regione(name)
     if regione:
         return jsonify({
             'name': regione.name,
-            # додайте інші поля за потреби
         })
     else:
         return jsonify({'message': 'Regione not found'}), 404
@@ -56,10 +50,10 @@ def delete_regione(name):
     if regione:
         return jsonify({
             'name': regione.name,
-            # додайте інші поля за потреби
         })
     else:
         return jsonify({'message': 'Regione not found'}), 404
+
 
 if __name__ == '__main__':
     app.run(debug=True)

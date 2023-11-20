@@ -17,7 +17,6 @@ class ParcelDAO:
             (10, 'крихке', '5 KG', 'В точці видачі')
         ]
 
-        # Додати значення в таблицю parcel
         for parcel_data in parcels_data:
             parcel = Parcel(
                 id=parcel_data[0],
@@ -27,7 +26,6 @@ class ParcelDAO:
             )
             db.session.add(parcel)
 
-        # Зберегти зміни в базі даних
         db.session.commit()
 
     @staticmethod

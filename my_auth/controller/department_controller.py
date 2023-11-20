@@ -16,7 +16,6 @@ def get_all_departments():
             'contacts': department.contacts,
             'city_id': department.city_id,
             'user_id': department.user_id,
-            # додайте інші поля за потреби
         })
     return jsonify({'departments': department_list})
 
@@ -31,7 +30,6 @@ def get_department(department_id):
             'contacts': department.contacts,
             'city_id': department.city_id,
             'user_id': department.user_id,
-            # додайте інші поля за потреби
         })
     else:
         return jsonify({'message': 'Department not found'}), 404
@@ -44,7 +42,6 @@ def create_department():
     contacts = data['contacts']
     city_id = data['city_id']
     user_id = data['user_id']
-    # додайте інші поля за потреби
     department = department_dao.create_department(location, number, contacts, city_id, user_id)
     return jsonify({
         'id': department.id,
@@ -53,7 +50,6 @@ def create_department():
         'contacts': department.contacts,
         'city_id': department.city_id,
         'user_id': department.user_id,
-        # додайте інші поля за потреби
     }), 201
 
 @app.route('/departments/<int:department_id>', methods=['PUT'])
@@ -64,7 +60,6 @@ def update_department(department_id):
     new_contacts = data['contacts']
     new_city_id = data['city_id']
     new_user_id = data['user_id']
-    # додайте інші поля за потреби
     department = department_dao.update_department(department_id, new_location, new_number, new_contacts, new_city_id, new_user_id)
     if department:
         return jsonify({
@@ -74,7 +69,6 @@ def update_department(department_id):
             'contacts': department.contacts,
             'city_id': department.city_id,
             'user_id': department.user_id,
-            # додайте інші поля за потреби
         })
     else:
         return jsonify({'message': 'Department not found'}), 404
@@ -90,10 +84,10 @@ def delete_department(department_id):
             'contacts': department.contacts,
             'city_id': department.city_id,
             'user_id': department.user_id,
-            # додайте інші поля за потреби
         })
     else:
         return jsonify({'message': 'Department not found'}), 404
+
 
 if __name__ == '__main__':
     app.run(debug=True)

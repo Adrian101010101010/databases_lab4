@@ -17,7 +17,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy()
 db.init_app(app)
 
-# Інші налаштування, які вам потрібні
 
 if __name__ == '__main__':
     app.run(debug=True)

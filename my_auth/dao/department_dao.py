@@ -19,12 +19,10 @@ class DepartmentDAO:
             (10, 'Chernihiv', '№6', '+380(67)543 21 89')
         ]
 
-        # Додати значення в таблицю department
         for dep_id, location, number, contacts in departments_data:
             department = Department(id=dep_id, location=location, number=number, contacts=contacts)
             db.session.add(department)
 
-        # Зберегти зміни в базі даних
         db.session.commit()
 
     @staticmethod

@@ -17,7 +17,6 @@ class DeliveryDAO:
             (10, 'Vitaly', '60*80*40')
         ]
 
-        # Додати значення в таблицю delivery
         for delivery_data in deliveries_data:
             delivery = Delivery(
                 id=delivery_data[0],
@@ -26,7 +25,6 @@ class DeliveryDAO:
             )
             db.session.add(delivery)
 
-        # Зберегти зміни в базі даних
         db.session.commit()
 
     @staticmethod

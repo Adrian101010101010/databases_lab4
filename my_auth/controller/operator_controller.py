@@ -15,7 +15,6 @@ def get_all_operators():
             'surname': operator.surname,
             'phone': operator.phone,
             'parcel_id': operator.parcel_id,
-            # додайте інші поля за потреби
         })
     return jsonify({'operators': operator_list})
 
@@ -29,7 +28,6 @@ def get_operator(operator_id):
             'surname': operator.surname,
             'phone': operator.phone,
             'parcel_id': operator.parcel_id,
-            # додайте інші поля за потреби
         })
     else:
         return jsonify({'message': 'Operator not found'}), 404
@@ -41,7 +39,6 @@ def create_operator():
     surname = data['surname']
     phone = data['phone']
     parcel_id = data['parcel_id']
-    # додайте інші поля за потреби
     operator = operator_dao.create_operator(name, surname, phone, parcel_id)
     return jsonify({
         'id': operator.id,
@@ -49,7 +46,6 @@ def create_operator():
         'surname': operator.surname,
         'phone': operator.phone,
         'parcel_id': operator.parcel_id,
-        # додайте інші поля за потреби
     }), 201
 
 @app.route('/operators/<int:operator_id>', methods=['PUT'])
@@ -59,7 +55,6 @@ def update_operator(operator_id):
     new_surname = data['surname']
     new_phone = data['phone']
     new_parcel_id = data['parcel_id']
-    # додайте інші поля за потреби
     operator = operator_dao.update_operator(operator_id, new_name, new_surname, new_phone, new_parcel_id)
     if operator:
         return jsonify({
@@ -68,7 +63,6 @@ def update_operator(operator_id):
             'surname': operator.surname,
             'phone': operator.phone,
             'parcel_id': operator.parcel_id,
-            # додайте інші поля за потреби
         })
     else:
         return jsonify({'message': 'Operator not found'}), 404
@@ -83,10 +77,10 @@ def delete_operator(operator_id):
             'surname': operator.surname,
             'phone': operator.phone,
             'parcel_id': operator.parcel_id,
-            # додайте інші поля за потреби
         })
     else:
         return jsonify({'message': 'Operator not found'}), 404
+
 
 if __name__ == '__main__':
     app.run(debug=True)

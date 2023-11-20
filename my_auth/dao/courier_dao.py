@@ -18,7 +18,6 @@ class CourierDAO:
             (10, 'Andriy', 'Melnyk', '+380(44)321 76 54', '1998-06-03')
         ]
 
-        # Додати значення в таблицю courier
         for courier_data in couriers_data:
             courier = Courier(
                 id=courier_data[0],
@@ -29,7 +28,6 @@ class CourierDAO:
             )
             db.session.add(courier)
 
-        # Зберегти зміни в базі даних
         db.session.commit()
 
     @staticmethod

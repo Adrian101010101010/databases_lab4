@@ -19,12 +19,10 @@ class CityDAO:
             (10, 'Chernihiv')
         ]
 
-        # Додати значення в таблицю city
         for city_id, city_name in cities_data:
             city = City(id=city_id, city_name=city_name)
             db.session.add(city)
 
-        # Зберегти зміни в базі даних
         db.session.commit()
 
     @staticmethod

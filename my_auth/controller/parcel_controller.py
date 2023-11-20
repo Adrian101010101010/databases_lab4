@@ -15,7 +15,6 @@ def get_all_parcels():
             'weight': parcel.weight,
             'status': parcel.status,
             'User_id': parcel.User_id,
-            # додайте інші поля за потреби
         })
     return jsonify({'parcels': parcel_list})
 
@@ -29,7 +28,6 @@ def get_parcel(parcel_id):
             'weight': parcel.weight,
             'status': parcel.status,
             'User_id': parcel.User_id,
-            # додайте інші поля за потреби
         })
     else:
         return jsonify({'message': 'Parcel not found'}), 404
@@ -41,7 +39,6 @@ def create_parcel():
     weight = data['weight']
     status = data['status']
     User_id = data['User_id']
-    # додайте інші поля за потреби
     parcel = parcel_dao.create_parcel(description, weight, status, User_id)
     return jsonify({
         'id': parcel.id,
@@ -49,7 +46,6 @@ def create_parcel():
         'weight': parcel.weight,
         'status': parcel.status,
         'User_id': parcel.User_id,
-        # додайте інші поля за потреби
     }), 201
 
 @app.route('/parcels/<int:parcel_id>', methods=['PUT'])
@@ -59,7 +55,6 @@ def update_parcel(parcel_id):
     new_weight = data['weight']
     new_status = data['status']
     new_User_id = data['User_id']
-    # додайте інші поля за потреби
     parcel = parcel_dao.update_parcel(parcel_id, new_description, new_weight, new_status, new_User_id)
     if parcel:
         return jsonify({
@@ -68,7 +63,6 @@ def update_parcel(parcel_id):
             'weight': parcel.weight,
             'status': parcel.status,
             'User_id': parcel.User_id,
-            # додайте інші поля за потреби
         })
     else:
         return jsonify({'message': 'Parcel not found'}), 404
@@ -83,10 +77,10 @@ def delete_parcel(parcel_id):
             'weight': parcel.weight,
             'status': parcel.status,
             'User_id': parcel.User_id,
-            # додайте інші поля за потреби
         })
     else:
         return jsonify({'message': 'Parcel not found'}), 404
+
 
 if __name__ == '__main__':
     app.run(debug=True)

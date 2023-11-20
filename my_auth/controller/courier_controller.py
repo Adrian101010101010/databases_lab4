@@ -14,8 +14,7 @@ def get_all_couriers():
             'name': courier.name,
             'surname': courier.surname,
             'phone': courier.phone,
-            'birthday': str(courier.birthday),  # конвертуємо об'єкт DATE в строку
-            # додайте інші поля за потреби
+            'birthday': str(courier.birthday),
         })
     return jsonify({'couriers': courier_list})
 
@@ -28,8 +27,7 @@ def get_courier(courier_id):
             'name': courier.name,
             'surname': courier.surname,
             'phone': courier.phone,
-            'birthday': str(courier.birthday),  # конвертуємо об'єкт DATE в строку
-            # додайте інші поля за потреби
+            'birthday': str(courier.birthday),
         })
     else:
         return jsonify({'message': 'Courier not found'}), 404
@@ -40,16 +38,14 @@ def create_courier():
     name = data['name']
     surname = data['surname']
     phone = data['phone']
-    birthday = data['birthday']  # передбачається, що дата надсилається у правильному форматі
-    # додайте інші поля за потреби
+    birthday = data['birthday']
     courier = courier_dao.create_courier(name, surname, phone, birthday)
     return jsonify({
         'id': courier.id,
         'name': courier.name,
         'surname': courier.surname,
         'phone': courier.phone,
-        'birthday': str(courier.birthday),  # конвертуємо об'єкт DATE в строку
-        # додайте інші поля за потреби
+        'birthday': str(courier.birthday),
     }), 201
 
 @app.route('/couriers/<int:courier_id>', methods=['PUT'])
@@ -58,8 +54,7 @@ def update_courier(courier_id):
     new_name = data['name']
     new_surname = data['surname']
     new_phone = data['phone']
-    new_birthday = data['birthday']  # передбачається, що дата надсилається у правильному форматі
-    # додайте інші поля за потреби
+    new_birthday = data['birthday']
     courier = courier_dao.update_courier(courier_id, new_name, new_surname, new_phone, new_birthday)
     if courier:
         return jsonify({
@@ -67,8 +62,7 @@ def update_courier(courier_id):
             'name': courier.name,
             'surname': courier.surname,
             'phone': courier.phone,
-            'birthday': str(courier.birthday),  # конвертуємо об'єкт DATE в строку
-            # додайте інші поля за потреби
+            'birthday': str(courier.birthday),
         })
     else:
         return jsonify({'message': 'Courier not found'}), 404
@@ -82,11 +76,11 @@ def delete_courier(courier_id):
             'name': courier.name,
             'surname': courier.surname,
             'phone': courier.phone,
-            'birthday': str(courier.birthday),  # конвертуємо об'єкт DATE в строку
-            # додайте інші поля за потреби
+            'birthday': str(courier.birthday),
         })
     else:
         return jsonify({'message': 'Courier not found'}), 404
+
 
 if __name__ == '__main__':
     app.run(debug=True)

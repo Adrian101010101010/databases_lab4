@@ -18,7 +18,6 @@ class OperatorDAO:
             (10, 'Oksana', 'Sydorenko', '+380(75)861 95 13')
         ]
 
-        # Додати значення в таблицю operator
         for operator_data in operators_data:
             operator = Operator(
                 id=operator_data[0],
@@ -28,7 +27,6 @@ class OperatorDAO:
             )
             db.session.add(operator)
 
-        # Зберегти зміни в базі даних
         db.session.commit()
 
     @staticmethod

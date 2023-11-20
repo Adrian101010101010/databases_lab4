@@ -18,12 +18,10 @@ class RegioneDAO:
             ('Chernihiv region')
         ]
 
-        # Додати значення в таблицю regione
         for name in regioni_data:
             regione = Regione(name=name)
             db.session.add(regione)
 
-        # Зберегти зміни в базі даних
         db.session.commit()
     @staticmethod
     def create_regione(name):

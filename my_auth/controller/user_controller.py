@@ -16,7 +16,6 @@ def get_all_users():
             'phone': user.phone,
             'birthday': user.birthday,
             'place_of_delivery': user.place_of_delivery,
-            # додайте інші поля за потреби
         })
     return jsonify({'users': user_list})
 
@@ -31,7 +30,6 @@ def get_user(id):
             'phone': user.phone,
             'birthday': user.birthday,
             'place_of_delivery': user.place_of_delivery,
-            # додайте інші поля за потреби
         })
     else:
         return jsonify({'message': 'User not found'}), 404
@@ -44,7 +42,6 @@ def create_user():
     phone = data['phone']
     birthday = data['birthday']
     place_of_delivery = data['place_of_delivery']
-    # додайте інші поля за потреби
     user = user_dao.create_user(name, surname, phone, birthday, place_of_delivery)
     return jsonify({
         'id': user.id,
@@ -53,13 +50,11 @@ def create_user():
         'phone': user.phone,
         'birthday': user.birthday,
         'place_of_delivery': user.place_of_delivery,
-        # додайте інші поля за потреби
     }), 201
 
 @app.route('/users/<int:id>', methods=['PUT'])
 def update_user(id):
     data = request.get_json()
-    # додайте інші поля за потреби
     user = user_dao.update_user(id)
     if user:
         return jsonify({
@@ -69,7 +64,6 @@ def update_user(id):
             'phone': user.phone,
             'birthday': user.birthday,
             'place_of_delivery': user.place_of_delivery,
-            # додайте інші поля за потреби
         })
     else:
         return jsonify({'message': 'User not found'}), 404
@@ -85,10 +79,10 @@ def delete_user(id):
             'phone': user.phone,
             'birthday': user.birthday,
             'place_of_delivery': user.place_of_delivery,
-            # додайте інші поля за потреби
         })
     else:
         return jsonify({'message': 'User not found'}), 404
+
 
 if __name__ == '__main__':
     app.run(debug=True)

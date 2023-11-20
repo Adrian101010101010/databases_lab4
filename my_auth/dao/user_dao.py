@@ -17,7 +17,6 @@ class UserDAO:
             (10, 'Taras', 'Sydor', '+380(96)876 54 32', '2002-03-04', 'delivery')
         ]
 
-        # Додати значення в таблицю user
         for user_data in users_data:
             user = User(
                 id=user_data[0],
@@ -29,7 +28,6 @@ class UserDAO:
             )
             db.session.add(user)
 
-        # Зберегти зміни в базі даних
         db.session.commit()
 
     @staticmethod
